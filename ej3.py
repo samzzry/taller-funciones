@@ -1,38 +1,35 @@
-def pedir_tipo():
-    t = input("Tipo (D depósito / R retiro / FIN): ")
+def pedir():
+ t = input("Tipo D deposito R retiro o FIN: ")
     return t
-
-def pedir_monto():
-    m = float(input("Monto: "))
+def monto():
+    m = float(input("mont "))
     return m
-
-def procesar_transacciones():
+def procesar():
     saldo = 1000
-    transacciones = 0
-
-    tipo = pedir_tipo()
-
+    trans = 0
+    tipo = pedir()
     while tipo != "FIN":
         if tipo == "D":
-            monto = pedir_monto()
-            saldo = saldo + monto
-            transacciones = transacciones + 1
-
+            m = monto()
+            saldo = saldo + m
+            trans = trans + 1
         else:
             if tipo == "R":
-                monto = pedir_monto()
-                if saldo - monto >= 0:
-                    saldo = saldo - monto
-                    transacciones = transacciones + 1
+                m = monto()
+                if saldo - m >= 0:
+                    saldo = saldo - m
+                    trans = trans + 1
                 else:
-                    print("No se puede retirar, saldo insuficiente")
+                    print("no se puede retirar, saldo insuficiente")
             else:
-                print("Tipo no válido")
+                print("tipo no valido")
 
-        tipo = pedir_tipo()
+        tipo = pedir()
+    return saldo, trans
+def mostrar(saldo, trans):
+    print("saldo final:", saldo)
+    print("transacciones validas:", trans)
 
-    return saldo, transacciones
-
-def mostrar_balance(saldo, transacciones):
-    print("Saldo final:", saldo)
-    print("Transacciones válidas:", transacciones)
+// PROGRAMA PRINCIPAL
+saldo, trans = procesar()
+mostrar(saldo, trans)

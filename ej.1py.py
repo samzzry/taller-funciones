@@ -1,37 +1,35 @@
-def pedir_producto():
-    p = int(input("¿Qué producto lleva? "))
+def pedir():
+    p = int(input("que producto lleva "))
     return p
-
-def cantidad_producto():
-    pedidos = int(input("Digite la cantidad de pedidos: "))
-    return pedidos
-
-def procesar_datos(pedidos):
-    suma = 0
-    contador = 0
-    
-    for i in range(pedidos):
-        calificacion = int(input(f"Del 1 al 5, ¿qué calificación le da al pedido {i+1}? "))
-        
-        if calificacion > 5:
-            calificacion = 5
-        elif calificacion < 1:
-            calificacion = 1
-            
-        if calificacion == 5:
-            print("Excelente")
-        
-        suma += calificacion
-        contador += 1
-    
-    return suma, contador
-
-def hacer_calculo(suma, contador):
-    if contador > 0:
-        promedio = suma / contador
+def cantidad():
+    c = int(input("cuantos pedidos son "))
+    return c
+def procesar(c):
+    total = 0
+    cont = 0   
+    for n in range(c):
+        print("calificacion del pedido:")
+        cal = int(input("Del 1 al 5 "))  
+        if cal > 5:
+            cal = 5
+        if cal < 1:
+            cal = 1
+        if cal == 5:
+            print("excelente")  
+        total = total + cal
+        cont = cont + 1
+    return total, cont
+def calcular(total, cont):
+    if cont > 0:
+        prom = total / cont
     else:
-        promedio = 0
-    return promedio
-
-def mostrar_mensaje(promedio):
-    print(f"El promedio de calificaciones es: {promedio:.2f}")
+        prom = 0
+    return prom
+def mostrar(prom):
+    print("El promedio es:", prom)
+// PROGRAMA PRINCIPAL
+producto = pedir()
+cant = cantidad()
+total, cont = procesar(cant)
+prom = calcular(total, cont)
+mostrar(prom)

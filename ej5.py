@@ -1,25 +1,18 @@
 def pedir_precio():
-    p = float(input("Precio del producto: "))
+    p = float(input("precio del producto: "))
     return p
-
 def pedir_cantidad():
-    c = int(input("Cantidad: "))
+    c = int(input("cantidad: "))
     return c
-
 def procesar_compra():
     subtotal = 0
-    seguir = input("¿Agregar producto? (S/N): ")
-
-    while seguir != "N":
+    seguir = input("agregar producto (si/no): ")
+    while seguir != "no":
         precio = pedir_precio()
         cantidad = pedir_cantidad()
-
         subtotal = subtotal + (precio * cantidad)
-
-        seguir = input("¿Agregar otro producto? (S/N): ")
-
+        seguir = input("agregar otro producto (si/no): ")
     return subtotal
-
 def calcular_descuento(subtotal):
     if subtotal > 1000:
         desc = subtotal * 0.10
@@ -28,10 +21,12 @@ def calcular_descuento(subtotal):
             desc = subtotal * 0.05
         else:
             desc = 0
-
     total = subtotal - desc
     return total, desc
-
 def mostrar_total(total, desc):
-    print("Descuento aplicado:", desc)
-    print("Monto final a pagar:", total)
+    print("descuento aplicado:", desc)
+    print("monto final a pagar:", total)
+// programa principal
+subtotal = procesar_compra()
+total, desc = calcular_descuento(subtotal)
+mostrar_total(total, desc)
